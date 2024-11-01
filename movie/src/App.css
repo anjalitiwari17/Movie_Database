@@ -1,0 +1,297 @@
+/* Universal box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Root variables */
+:root {
+  --primary-color: gray;
+  --secondary-color: rgb(2, 2, 37);
+}
+
+/* Base styles */
+body {
+  background-color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* Header styles */
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-title {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.header-icon {
+  width: 60px;
+  height: auto;
+  margin-right: 1rem;
+  background-color: beige;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+/* Search bar styling */
+.search {
+  background-color: white;
+  margin-right: 1rem;
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  color: var(--primary-color);
+  transition: background-color 0.3s ease;
+}
+
+.search:focus {
+  outline: 0;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.search::placeholder {
+  color: black;
+}
+
+/* Main content margin */
+main {
+  margin-top: 6rem;
+}
+
+/* Movie card styles */
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.movie {
+  width: 300px;
+  margin: 1rem;
+  border-radius: 3px;
+  box-shadow: 10px 10px 10px rgb(102, 129, 142);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Movie info */
+.movie-info {
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
+}
+
+.movie-info span {
+  background-color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* Movie overview */
+.overview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: whitesmoke;
+  padding: 1rem;
+  max-height: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in;
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
+}
+
+.title {
+  color: aliceblue;
+  margin-right: 25vw;
+}
+
+.no-results {
+  color: white;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: white;
+  background-color: var(--secondary-color);
+  padding: 30px;
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+.error-message,
+.no-results-message {
+  color: red;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+/* Responsive styles */
+
+/* Medium screens (768px and below) */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .movie {
+    width: 90%;
+    margin: 0.5rem 0;
+  }
+
+  .pagination button {
+    padding: 10px 15px;
+  }
+}
+
+/* Small screens (480px and below) */
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .movie {
+    width: 100%;
+  }
+
+  .movie img {
+    border-radius: 5px;
+  }
+
+  .search {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+
+  .pagination button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Extra small screens (400px and below) */
+@media (max-width: 400px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .search::placeholder {
+    content: "Search"; /* Placeholder mein sirf "Search" dikhaye */
+  }
+  .movie {
+    width: 90%;
+  }
+
+  .pagination button {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+/* Minimum screen width (150px and below) */
+@media (max-width: 150px) {
+  body {
+    font-size: 10px;
+    overflow-x: hidden;
+  }
+
+  header {
+    font-size: 8px;
+    padding: 5px;
+    flex-direction: column;
+  }
+
+  .header-title {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  .search {
+    width: 50%;
+    font-size: 0.5rem;
+    padding: 4px;
+  }
+
+  .movie {
+    width: 100%;
+    font-size: 0.8rem;
+    margin: 0.2rem;
+  }
+
+  .pagination button {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+}
